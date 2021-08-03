@@ -22,4 +22,12 @@ describe('Bowling Game', () => {
         rollMany(20, 1);
         expect(game.score()).toEqual(20);
     });
+
+    test('test one spare', () => {
+        game.roll(5);
+        game.roll(5); // spare
+        game.roll(3);
+        rollMany(17, 0);
+        expect(game.score()).toEqual(16);
+    });
 });
