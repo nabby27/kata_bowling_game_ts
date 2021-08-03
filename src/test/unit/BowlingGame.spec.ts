@@ -10,4 +10,14 @@ describe('Bowling Game', () => {
 
         expect(game.score()).toEqual(0);
     });
+
+    test('test all ones', () => {
+        const game = new Game();
+
+        for (let i = 0; i < 20; i++) {
+            game.roll(1);
+        }
+
+        expect(game.score()).toEqual(20);
+    });
 });
