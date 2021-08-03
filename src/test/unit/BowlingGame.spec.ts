@@ -1,23 +1,25 @@
 import { Game } from '../../app/Game'
 
 describe('Bowling Game', () => {
-    test('test gutter game', () => {
-        const game = new Game();
+    let game: Game;
 
-        for (let i = 0; i < 20; i++) {
-            game.roll(0);
+    function rollMany(numberOfRolls: number, pinsKnockedDown: number) {
+        for (let i = 0; i < numberOfRolls; i++) {
+            game.roll(pinsKnockedDown);
         }
+    }
 
+    beforeEach(() => {
+        game = new Game();
+    })
+
+    test('test gutter game', () => {
+        rollMany(20, 0);
         expect(game.score()).toEqual(0);
     });
 
     test('test all ones', () => {
-        const game = new Game();
-
-        for (let i = 0; i < 20; i++) {
-            game.roll(1);
-        }
-
+        rollMany(20, 1);
         expect(game.score()).toEqual(20);
     });
 });
