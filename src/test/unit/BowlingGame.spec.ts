@@ -25,7 +25,7 @@ describe('Bowling Game', () => {
     });
 
     test('test one strike', () => {
-        game.roll(10);
+        rollStrike();
         game.roll(3);
         game.roll(4);
         rollMany(16, 0);
@@ -36,6 +36,10 @@ describe('Bowling Game', () => {
         for (let i = 0; i < numberOfRolls; i++) {
             game.roll(pinsKnockedDown);
         }
+    }
+
+    function rollStrike() {
+        game.roll(10);
     }
 
     function rollSpare() {
