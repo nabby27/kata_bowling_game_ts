@@ -1,10 +1,12 @@
 export class Game {
 
-    public roll(pinsKnockedDown: number): void {
+    private _score = 0;
 
+    public roll(pinsKnockedDown: number): void {
+        this._score += pinsKnockedDown;
     }
 
     public score(): number {
-        return 0;
+        return this._score;
     }
 }
