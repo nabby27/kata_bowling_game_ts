@@ -3,12 +3,6 @@ import { Game } from '../../app/Game'
 describe('Bowling Game', () => {
     let game: Game;
 
-    function rollMany(numberOfRolls: number, pinsKnockedDown: number) {
-        for (let i = 0; i < numberOfRolls; i++) {
-            game.roll(pinsKnockedDown);
-        }
-    }
-
     beforeEach(() => {
         game = new Game();
     })
@@ -24,10 +18,20 @@ describe('Bowling Game', () => {
     });
 
     test('test one spare', () => {
-        game.roll(5);
-        game.roll(5); // spare
+        rollSpare();
         game.roll(3);
         rollMany(17, 0);
         expect(game.score()).toEqual(16);
     });
+
+    function rollMany(numberOfRolls: number, pinsKnockedDown: number) {
+        for (let i = 0; i < numberOfRolls; i++) {
+            game.roll(pinsKnockedDown);
+        }
+    }
+
+    function rollSpare() {
+        game.roll(5);
+        game.roll(5);
+    }
 });
