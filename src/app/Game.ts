@@ -10,16 +10,20 @@ export class Game {
 
     public score(): number {
         let score = 0;
-        let i = 0;
+        let frameIndex = 0;
         for (let frame = 0; frame < 10; frame++) {
-            if (this._rolls[i] + this._rolls[i + 1] == 10) { // spare
-                score += 10 + this._rolls[i + 2]
+            if (this.isSpare(frameIndex)) {
+                score += 10 + this._rolls[frameIndex + 2]
             } else {
-                score += this._rolls[i] + this._rolls[i + 1];
+                score += this._rolls[frameIndex] + this._rolls[frameIndex + 1];
             }
-            i += 2;
+            frameIndex += 2;
         }
 
         return score;
+    }
+
+    private isSpare(frameIndex: number): boolean {
+        return this._rolls[frameIndex] + this._rolls[frameIndex + 1] == 10;
     }
 }
