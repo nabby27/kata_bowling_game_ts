@@ -1,4 +1,4 @@
-class Game {
+export class Game {
 
     public roll(pinsKnockedDown: number): void {
 
