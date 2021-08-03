@@ -12,18 +12,22 @@ export class Game {
         let score = 0;
         let frameIndex = 0;
         for (let frame = 0; frame < 10; frame++) {
-            if (this.isSpare(frameIndex)) {
+            if (this._rolls[frameIndex] === 10) {
+                score += 10 + this._rolls[frameIndex + 1] + this._rolls[frameIndex + 2]
+                frameIndex++;
+            } else if (this.isSpare(frameIndex)) {
                 score += 10 + this._rolls[frameIndex + 2]
+                frameIndex += 2;
             } else {
                 score += this._rolls[frameIndex] + this._rolls[frameIndex + 1];
+                frameIndex += 2;
             }
-            frameIndex += 2;
         }
 
         return score;
     }
 
     private isSpare(frameIndex: number): boolean {
-        return this._rolls[frameIndex] + this._rolls[frameIndex + 1] == 10;
+        return this._rolls[frameIndex] + this._rolls[frameIndex + 1] === 10;
     }
 }
