@@ -10,9 +10,14 @@ export class Game {
 
     public score(): number {
         let score = 0;
-
-        for (let i = 0; i < this._rolls.length; i++) {
-            score += this._rolls[i];
+        let i = 0;
+        for (let frame = 0; frame < 10; frame++) {
+            if (this._rolls[i] + this._rolls[i + 1] == 10) { // spare
+                score += 10 + this._rolls[i + 2]
+            } else {
+                score += this._rolls[i] + this._rolls[i + 1];
+            }
+            i += 2;
         }
 
         return score;
